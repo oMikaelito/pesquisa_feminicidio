@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feminicídio e Violência Contra a Mulher · UNIFAPI</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,300;1,600&family=Epilogue:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #09080a;
+    --surface:  #110f12;
+    --card:     #161318;
+    --border:   #241e27;
+    --red:      #b5224a;
+    --red-glow: rgba(181,34,74,0.18);
+    --rose:     #e8476e;
+    --cream:    #ede5d8;
+    --muted:    #8a7a88;
+    --dim:      #4a3d48;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Epilogue', sans-serif;
+    background: var(--bg);
+    color: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 4rem;
+    background: rgba(9,8,10,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem; font-weight: 300;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .nav-brand strong { color: var(--rose); font-weight: 600; }
+  .nav-pill {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--border);
+    font-size: 0.72rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .nav-dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative; overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 8rem 4rem 5rem;
+    position: relative; z-index: 2;
+  }
+  .hero-right {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+
+  /* Fundo visual lado direito */
+  .hero-visual {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 70% at 60% 40%, rgba(181,34,74,0.22) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 80% at 90% 80%, rgba(181,34,74,0.08) 0%, transparent 60%),
+      linear-gradient(135deg, #0e0a10 0%, #09080a 100%);
+  }
+  .hero-lines {
+    position: absolute; inset: 0; opacity: 0.06;
+    background-image: repeating-linear-gradient(
+      0deg, transparent, transparent 39px, var(--rose) 39px, var(--rose) 40px
+    );
+  }
+  .hero-big-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28vw; font-weight: 700; line-height: 0.85;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(181,34,74,0.2);
+    user-select: none; pointer-events: none;
+    position: absolute;
+    animation: fadeUp 1.8s ease forwards;
+  }
+  .hero-stat-card {
+    position: relative; z-index: 2;
+    border: 1px solid var(--border);
+    background: rgba(22,19,24,0.7);
+    backdrop-filter: blur(8px);
+    padding: 2.5rem;
+    max-width: 280px;
+    animation: fadeUp 1.4s 0.3s ease both;
+  }
+  .hero-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem; font-weight: 700; line-height: 1;
+    color: var(--rose); margin-bottom: 0.6rem;
+  }
+  .hero-stat-label {
+    font-size: 0.8rem; color: var(--muted); line-height: 1.6;
+  }
+
+  /* Textos hero */
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 2rem;
+    font-size: 0.72rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--rose);
+    animation: fadeUp 1s 0.1s ease both;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 2.5rem; height: 1px; background: var(--red);
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5.5vw, 5.5rem);
+    font-weight: 300; line-height: 1.08;
+    color: var(--cream); margin-bottom: 1.8rem;
+    animation: fadeUp 1s 0.2s ease both;
+  }
+  .hero-title em {
+    font-style: italic; font-weight: 600;
+    color: var(--rose);
+  }
+  .hero-desc {
+    font-size: 0.93rem; color: var(--muted);
+    line-height: 1.8; max-width: 440px;
+    margin-bottom: 3rem;
+    animation: fadeUp 1s 0.35s ease both;
+  }
+  .hero-cta-group {
+    display: flex; gap: 1rem; align-items: center;
+    animation: fadeUp 1s 0.5s ease both;
+  }
+  .cta-main {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    background: var(--red); color: var(--cream);
+    padding: 1rem 2.2rem;
+    font-family: 'Epilogue', sans-serif;
+    font-size: 0.8rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: all 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .cta-main::after {
+    content: ''; position: absolute; inset: 0;
+    background: var(--rose); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .cta-main:hover::after { transform: scaleX(1); }
+  .cta-main span { position: relative; z-index: 1; }
+  .cta-main svg { position: relative; z-index: 1; transition: transform 0.25s; }
+  .cta-main:hover svg { transform: translateX(4px); }
+  .cta-scroll {
+    font-size: 0.78rem; color: var(--dim); letter-spacing: 0.08em;
+    text-transform: uppercase; cursor: pointer;
+    transition: color 0.2s; text-decoration: none;
+  }
+  .cta-scroll:hover { color: var(--muted); }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .stat-cell {
+    padding: 2.8rem 4rem;
+    border-right: 1px solid var(--border);
+    position: relative; overflow: hidden;
+  }
+  .stat-cell:last-child { border-right: none; }
+  .stat-cell::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px; background: var(--red);
+    transform: scaleY(0); transform-origin: bottom;
+    transition: transform 0.5s ease;
+  }
+  .stat-cell:hover::before { transform: scaleY(1); }
+  .stat-n {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem; font-weight: 700; line-height: 1;
+    color: var(--rose); margin-bottom: 0.5rem;
+  }
+  .stat-l { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
+
+  /* ── SEÇÕES ── */
+  section { padding: 7rem 4rem; }
+
+  .section-label {
+    display: flex; align-items: center; gap: 0.8rem;
+    font-size: 0.7rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--rose);
+    margin-bottom: 1.2rem;
+  }
+  .section-label::before {
+    content: ''; width: 1.8rem; height: 1px; background: var(--red);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 600; color: var(--cream); line-height: 1.15;
+  }
+
+  /* SOBRE */
+  .sobre-grid {
+    display: grid; grid-template-columns: 1.2fr 1fr;
+    gap: 6rem; align-items: start; margin-top: 4rem;
+  }
+  .sobre-text p {
+    font-size: 0.95rem; color: var(--muted); line-height: 1.85;
+    margin-bottom: 1.5rem;
+  }
+  .sobre-text p:last-child { margin-bottom: 0; }
+  .sobre-text strong { color: var(--cream); font-weight: 500; }
+  
+  .sobre-aside { display: flex; flex-direction: column; gap: 1px; }
+  
+  /* Cards laterais (Violência Física, etc.) */
+  .aside-item {
+    padding: 1.8rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-bottom: none;
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
+  }
+  .aside-item:last-child { border-bottom: 1px solid var(--border); }
+  
+  /* Linha sutil na lateral esquerda */
+  .aside-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 2px;
+    background: var(--red);
+    transform: scaleY(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .aside-item:hover {
+    transform: translateX(6px);
+    background: rgba(181, 34, 74, 0.04);
+  }
+  .aside-item:hover::before {
+    transform: scaleY(1);
+  }
+  
+  .aside-tag {
+    font-size: 0.68rem; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--rose);
+    margin-bottom: 0.6rem;
+  }
+  .aside-text { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+  /* LEI */
+  .lei-section { background: var(--surface); }
+  .lei-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; margin-top: 4rem;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .lei-card {
+    background: var(--card); padding: 2.5rem;
+    position: relative; overflow: hidden;
+    transition: background 0.2s;
+  }
+  .lei-card:hover { background: #1c1720; }
+  .lei-num {
+    font-family: 'Epilogue', sans-serif;
+    font-size: 2.8rem; font-weight: 300; line-height: 1;
+    color: var(--rose);
+    letter-spacing: 0.05em;
+    margin-bottom: 1.2rem;
+    opacity: 0.55;
+  }
+  .lei-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem; font-weight: 600;
+    color: var(--cream); margin-bottom: 0.8rem;
+  }
+  .lei-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.7; }
+
+  /* CICLO */
+  .ciclo-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    margin-top: 4rem; position: relative;
+  }
+  .ciclo-step {
+    padding: 3rem 2.5rem;
+    border: 1px solid var(--border);
+    border-right: none; text-align: left;
+    position: relative;
+    transition: background 0.3s;
+  }
+  .ciclo-step:last-child { border-right: 1px solid var(--border); }
+  .ciclo-step:hover { background: rgba(181,34,74,0.04); }
+  .ciclo-step::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px; background: var(--red);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.45s ease;
+  }
+  .ciclo-step:hover::after { transform: scaleX(1); }
+  .ciclo-index {
+    font-family: 'Epilogue', sans-serif;
+    font-size: 3.5rem; font-weight: 300;
+    color: var(--rose); opacity: 0.4;
+    line-height: 1; margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+  }
+  .ciclo-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 600;
+    color: var(--rose); margin-bottom: 0.8rem;
+  }
+  .ciclo-desc { font-size: 0.84rem; color: var(--muted); line-height: 1.7; }
+
+  /* CANAIS */
+  .canais-section { background: var(--surface); }
+  .canais-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1rem; margin-top: 4rem;
+  }
+  .canal-card {
+    padding: 2rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    position: relative; 
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+  .canal-card:hover { background: rgba(181,34,74,0.04); }
+
+  /* Efeito de borda percorrendo o card */
+  .canal-card .line {
+    position: absolute;
+    background: var(--red);
+    transition: transform 0.15s linear;
+    z-index: 2;
+  }
+  .canal-card .line-top {
+    top: 0; left: 0; right: 0; height: 2px;
+    transform: scaleX(0); transform-origin: left;
+    transition-delay: 0.45s;
+  }
+  .canal-card .line-right {
+    top: 0; right: 0; bottom: 0; width: 2px;
+    transform: scaleY(0); transform-origin: top;
+    transition-delay: 0.3s;
+  }
+  .canal-card .line-bottom {
+    bottom: 0; left: 0; right: 0; height: 2px;
+    transform: scaleX(0); transform-origin: right;
+    transition-delay: 0.15s;
+  }
+  .canal-card .line-left {
+    top: 0; left: 0; bottom: 0; width: 2px;
+    transform: scaleY(0); transform-origin: bottom;
+    transition-delay: 0s;
+  }
+
+  .canal-card:hover .line-top { transform: scaleX(1); transition-delay: 0s; }
+  .canal-card:hover .line-right { transform: scaleY(1); transition-delay: 0.15s; }
+  .canal-card:hover .line-bottom { transform: scaleX(1); transition-delay: 0.3s; }
+  .canal-card:hover .line-left { transform: scaleY(1); transition-delay: 0.45s; }
+
+  .canal-num {
+    font-family: 'Epilogue', sans-serif;
+    font-size: 2.4rem; font-weight: 300;
+    color: var(--rose); line-height: 1; margin-bottom: 0.5rem;
+    letter-spacing: 0.03em;
+  }
+  .canal-name { font-size: 0.85rem; color: var(--cream); font-weight: 500; margin-bottom: 0.4rem; }
+  .canal-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.55; }
+
+  /* CTA FINAL */
+  .cta-section {
+    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: 50vh; background: var(--bg);
+  }
+  .cta-left {
+    padding: 6rem 4rem;
+    display: flex; flex-direction: column; justify-content: center;
+    border-right: 1px solid var(--border);
+  }
+  .cta-left .section-label { margin-bottom: 2rem; }
+  .cta-big-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 4rem);
+    font-weight: 600; line-height: 1.15;
+    color: var(--cream); margin-bottom: 1.5rem;
+  }
+  .cta-big-title em { font-style: italic; color: var(--rose); }
+  .cta-subtitle { font-size: 0.9rem; color: var(--muted); line-height: 1.75; margin-bottom: 3rem; }
+  .cta-btn {
+    display: inline-flex; align-items: center; gap: 0.8rem;
+    background: var(--red); color: var(--cream);
+    padding: 1.1rem 2.5rem;
+    font-family: 'Epilogue', sans-serif;
+    font-size: 0.82rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; width: fit-content;
+    transition: all 0.25s; border: 1px solid transparent;
+    position: relative; overflow: hidden;
+  }
+  .cta-btn::after {
+    content: ''; position: absolute; inset: 0;
+    background: var(--rose); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .cta-btn:hover::after { transform: scaleX(1); }
+  .cta-btn span, .cta-btn svg { position: relative; z-index: 1; }
+  .cta-btn:hover svg { transform: translateX(4px); }
+  .cta-btn svg { transition: transform 0.25s; }
+  .cta-note {
+    margin-top: 1.2rem; font-size: 0.75rem; color: var(--dim);
+  }
+
+  .cta-right {
+    background: var(--surface);
+    display: flex; align-items: center; justify-content: center;
+    padding: 6rem 4rem;
+  }
+  .disclaimer-box {
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--red);
+    padding: 2.5rem;
+    max-width: 380px;
+  }
+  .disclaimer-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 600;
+    color: var(--cream); margin-bottom: 1rem;
+  }
+  .disclaimer-text { font-size: 0.82rem; color: var(--muted); line-height: 1.75; }
+  .disclaimer-text + .disclaimer-text { margin-top: 0.8rem; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--surface);
+  }
+  .footer-left { font-size: 0.75rem; color: var(--dim); line-height: 1.6; }
+  .footer-right { font-size: 0.75rem; color: var(--dim); text-align: right; line-height: 1.6; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes floatDot {
+    0%,100% { transform: translateY(0) scale(1); opacity: 0.5; }
+    50%     { transform: translateY(-20px) scale(1.2); opacity: 0.2; }
+  }
+  @keyframes glowPulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(181,34,74,0); }
+    50%     { box-shadow: 0 0 32px 6px rgba(181,34,74,0.13); }
+  }
+
+  /* Partículas hero */
+  .hero-particles { position: absolute; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
+  .particle {
+    position: absolute; width: 2px; height: 2px; border-radius: 50%;
+    background: var(--rose);
+    animation: floatDot var(--dur) var(--delay) ease-in-out infinite;
+  }
+
+  /* Glow no hero card */
+  .hero-stat-card { animation: fadeUp 1.4s 0.3s ease both, glowPulse 5s 2s ease-in-out infinite; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 7rem 1.5rem 3rem; }
+    .hero-right { min-height: 40vh; }
+    .hero-big-num { font-size: 45vw; }
+    .stats-bar { grid-template-columns: 1fr; }
+    .stat-cell { border-right: none; border-bottom: 1px solid var(--border); padding: 2rem 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+    .sobre-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .lei-grid { grid-template-columns: 1fr; }
+    .ciclo-grid { grid-template-columns: 1fr; }
+    .ciclo-step { border-right: 1px solid var(--border); border-bottom: none; }
+    .ciclo-step:last-child { border-bottom: 1px solid var(--border); }
+    .canais-grid { grid-template-columns: repeat(2, 1fr); }
+    .cta-section { grid-template-columns: 1fr; }
+    .cta-left { padding: 4rem 1.5rem; border-right: none; border-bottom: 1px solid var(--border); }
+    .cta-right { padding: 3rem 1.5rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+    .footer-right { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand"><strong>UNIFAPI</strong> · Análise e Desenvolvimento de Sistemas</div>
+  <div class="nav-pill">
+    <div class="nav-dot"></div>
+    Pesquisa Ativa · 2026
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Cultura Extensionista · UNIFAPI</div>
+    <h1 class="hero-title">
+      Feminicídio<br>& <em>Violência</em><br>contra a Mulher
+    </h1>
+    <p class="hero-desc">
+      Uma pesquisa acadêmica sobre percepção, conhecimento e prevenção da violência de gênero no Brasil. Dados anonimizados. Participação voluntária.
+    </p>
+    <div class="hero-cta-group">
+      <a href="#LINK_GOOGLE_FORMS_AQUI" target="_blank" class="cta-main">
+        <span>Participar da pesquisa</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="#sobre" class="cta-scroll">Saiba mais ↓</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-visual"></div>
+    <div class="hero-lines"></div>
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-big-num">4</div>
+    <div class="hero-stat-card">
+      <div class="hero-stat-num">4/dia</div>
+      <div class="hero-stat-label">mulheres assassinadas por feminicídio no Brasil em 2025</div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-cell">
+    <div class="stat-n" data-target="83 mil">0 mil</div>
+    <div class="stat-l">mulheres e meninas assassinadas no mundo em 2024</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-n" data-target="60%">0%</div>
+    <div class="stat-l">dos homicídios femininos globais cometidos por parceiros ou familiares</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-n" data-target="6900+">0+</div>
+    <div class="stat-l">ocorrências entre casos consumados e tentativas em 2025</div>
+  </div>
+</div>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="section-label">Fundamentação</div>
+  <h2 class="section-title">O que é a violência de gênero?</h2>
+  <div class="sobre-grid">
+    <div class="sobre-text">
+      <p>
+        A <strong>violência contra a mulher</strong> é um fenômeno social complexo, estrutural e histórico, presente em diversas sociedades. Evidencia desigualdades de gênero profundamente enraizadas, manifestando-se por meio de agressões físicas, psicológicas, sexuais, morais e patrimoniais.
+      </p>
+      <p>
+        O <strong>feminicídio</strong> representa a forma mais extrema dessa violência: o assassinato de mulher em razão de sua condição de gênero. Frequentemente está associado a contextos de violência doméstica e relações de poder desiguais.
+      </p>
+      <p>
+        Além do impacto físico, a violência de gênero gera <strong>depressão, ansiedade e trauma psicológico</strong>. A subnotificação — alimentada pelo medo, dependência financeira ou falta de confiança nas instituições — dificulta a dimensão real do problema.
+      </p>
+    </div>
+    <div class="sobre-aside">
+      <div class="aside-item">
+        <div class="aside-tag">Violência física</div>
+        <div class="aside-text">Qualquer ato que cause lesão corporal à vítima, independente do ambiente.</div>
+      </div>
+      <div class="aside-item">
+        <div class="aside-tag">Violência psicológica</div>
+        <div class="aside-text">Ameaças, humilhações, controle e isolamento que causam dano emocional.</div>
+      </div>
+      <div class="aside-item">
+        <div class="aside-tag">Violência patrimonial</div>
+        <div class="aside-text">Retenção de bens, dinheiro ou documentos como instrumento de controle.</div>
+      </div>
+      <div class="aside-item">
+        <div class="aside-tag">Violência sexual e moral</div>
+        <div class="aside-text">Coerção sexual e exposição a situações vexatórias que atingem a dignidade.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEI -->
+<section class="lei-section">
+  <div class="section-label">Marco legal</div>
+  <h2 class="section-title">A legislação brasileira</h2>
+  <div class="lei-grid">
+    <div class="lei-card">
+      <div class="lei-num">11.340</div>
+      <div class="lei-name">Lei Maria da Penha</div>
+      <div class="lei-desc">Criada em 2006, cria mecanismos para coibir a violência doméstica e familiar contra a mulher, prevendo medidas protetivas de urgência e criando Juizados Especializados.</div>
+    </div>
+    <div class="lei-card">
+      <div class="lei-num">13.104</div>
+      <div class="lei-name">Lei do Feminicídio</div>
+      <div class="lei-desc">Sancionada em 2015, tipifica o feminicídio como crime hediondo com penas agravadas, quando o homicídio é praticado contra mulher em razão de sua condição de gênero.</div>
+    </div>
+    <div class="lei-card">
+      <div class="lei-num">14.550</div>
+      <div class="lei-name">Proteção ampliada</div>
+      <div class="lei-desc">Legislação mais recente que ampliou o escopo da Lei Maria da Penha, garantindo proteção também em relações afetivas sem coabitação e reforçando fiscalização de medidas protetivas.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CICLO -->
+<section>
+  <div class="section-label">Compreensão</div>
+  <h2 class="section-title">O ciclo da violência</h2>
+  <div class="ciclo-grid">
+    <div class="ciclo-step">
+      <div class="ciclo-index">01</div>
+      <div class="ciclo-name">Tensão</div>
+      <p class="ciclo-desc">O agressor apresenta comportamentos abusivos e ameaças progressivas. A vítima vive em estado de alerta constante, tentando evitar conflitos e "controlar" o ambiente.</p>
+    </div>
+    <div class="ciclo-step">
+      <div class="ciclo-index">02</div>
+      <div class="ciclo-name">Agressão</div>
+      <p class="ciclo-desc">Ocorre a violência propriamente dita — física, psicológica, sexual, moral ou patrimonial. A intensidade das agressões tende a aumentar a cada novo ciclo.</p>
+    </div>
+    <div class="ciclo-step">
+      <div class="ciclo-index">03</div>
+      <div class="ciclo-name">Reconciliação</div>
+      <p class="ciclo-desc">O agressor demonstra arrependimento e promessas de mudança. Essa fase — chamada "lua de mel" — dificulta o rompimento do relacionamento pela vítima.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CANAIS -->
+<section class="canais-section">
+  <div class="section-label">Onde buscar ajuda</div>
+  <h2 class="section-title">Canais de apoio</h2>
+  <div class="canais-grid">
+    <div class="canal-card">
+      <span class="line line-top"></span>
+      <span class="line line-right"></span>
+      <span class="line line-bottom"></span>
+      <span class="line line-left"></span>
+      <div class="canal-num">180</div>
+      <div class="canal-name">Central da Mulher</div>
+      <div class="canal-desc">Atendimento gratuito, 24h. Orientação, informação e encaminhamento.</div>
+    </div>
+    <div class="canal-card">
+      <span class="line line-top"></span>
+      <span class="line line-right"></span>
+      <span class="line line-bottom"></span>
+      <span class="line line-left"></span>
+      <div class="canal-num">190</div>
+      <div class="canal-name">Emergência</div>
+      <div class="canal-desc">Polícia Militar. Em situação de risco imediato, ligue sem hesitar.</div>
+    </div>
+    <div class="canal-card">
+      <span class="line line-top"></span>
+      <span class="line line-right"></span>
+      <span class="line line-bottom"></span>
+      <span class="line line-left"></span>
+      <div class="canal-num">CREAS</div>
+      <div class="canal-name">Assistência Social</div>
+      <div class="canal-desc">Rede de proteção social, apoio psicológico e acompanhamento de casos.</div>
+    </div>
+    <div class="canal-card">
+      <span class="line line-top"></span>
+      <span class="line line-right"></span>
+      <span class="line line-bottom"></span>
+      <span class="line line-left"></span>
+      <div class="canal-num">DDM</div>
+      <div class="canal-name">Delegacia da Mulher</div>
+      <div class="canal-desc">Registro de ocorrência e solicitação de medidas protetivas de urgência.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<div class="cta-section">
+  <div class="cta-left">
+    <div class="section-label">Pesquisa acadêmica</div>
+    <h2 class="cta-big-title">
+      Sua voz<br><em>importa</em><br>nessa pesquisa.
+    </h2>
+    <p class="cta-subtitle">
+      O questionário é anônimo, leva cerca de 5 minutos e contribui diretamente para a produção de conhecimento sobre percepção e prevenção da violência de gênero no Brasil.
+    </p>
+    <a href="#https://forms.gle/f6LR7wsB6PpEow3C7" target="_blank" class="cta-btn">
+      <span>Responder o questionário</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <p class="cta-note"></p>
+  </div>
+  <div class="cta-right">
+    <div class="disclaimer-box">
+      <div class="disclaimer-title">Sobre esta pesquisa</div>
+      <p class="disclaimer-text">
+        Trabalho de Cultura Extensionista apresentado à Faculdade UNIFAPI, curso de Análise e Desenvolvimento de Sistemas, 2026.
+      </p>
+      <p class="disclaimer-text">
+        Acadêmicos: Adriana Santiago Severo, Daniel Ranghetti, Evelyn Costa, Guilherme Streit, João Gabriel Morais e Mikael Petriw.
+      </p>
+      <p class="disclaimer-text" style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid var(--border);">
+        Nenhum dado identificável é coletado. Sem nome, e-mail, CPF ou endereço.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    UNIFAPI · Análise e Desenvolvimento de Sistemas · 2026<br>
+    Cultura Extensionista — Feminicídio e Violência contra a Mulher
+  </div>
+  <div class="footer-right">
+    Central de Atendimento à Mulher: <strong style="color:var(--rose)">180</strong><br>
+    Emergência: <strong style="color:var(--rose)">190</strong>
+  </div>
+</footer>
+
+<script>
+  // Partículas flutuantes no hero
+  const container = document.getElementById('particles');
+  if (container) {
+    for (let i = 0; i < 18; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.cssText = `
+        left: ${10 + Math.random() * 80}%;
+        top: ${10 + Math.random() * 80}%;
+        --dur: ${3 + Math.random() * 4}s;
+        --delay: ${Math.random() * 4}s;
+        opacity: ${0.15 + Math.random() * 0.35};
+        width: ${1 + Math.random() * 2}px;
+        height: ${1 + Math.random() * 2}px;
+      `;
+      container.appendChild(p);
+    }
+  }
+
+  // Contador numérico animado — sobe do 0 até o valor (apenas para estatísticas)
+  function animateCounter(el) {
+    const raw = el.dataset.target;
+    if (!raw) return;
+    const target = parseFloat(raw.replace(/[^0-9.]/g, ''));
+    const suffix = raw.replace(/[0-9.]/g, ''); 
+    const prefix = el.dataset.prefix || '';
+    const duration = 1400;
+    const start = performance.now();
+    const isFloat = raw.includes('.');
+
+    function step(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const current = target * ease;
+      el.textContent = prefix + (isFloat
+        ? current.toFixed(1)
+        : Math.floor(current).toLocaleString('pt-BR')) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  // IntersectionObserver para iniciar a contagem nas estatísticas
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+
+      if (el.classList.contains('stat-cell')) {
+        el.querySelectorAll('[data-target]').forEach(animateCounter);
+      }
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.stat-cell').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
