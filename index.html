@@ -73,7 +73,6 @@
     overflow: hidden;
   }
 
-  /* Fundo visual lado direito */
   .hero-visual {
     position: absolute; inset: 0;
     background:
@@ -114,7 +113,6 @@
     font-size: 0.8rem; color: var(--muted); line-height: 1.6;
   }
 
-  /* Textos hero */
   .hero-eyebrow {
     display: flex; align-items: center; gap: 1rem;
     margin-bottom: 2rem;
@@ -220,7 +218,6 @@
     font-weight: 600; color: var(--cream); line-height: 1.15;
   }
 
-  /* SOBRE */
   .sobre-grid {
     display: grid; grid-template-columns: 1.2fr 1fr;
     gap: 6rem; align-items: start; margin-top: 4rem;
@@ -234,7 +231,6 @@
   
   .sobre-aside { display: flex; flex-direction: column; gap: 1px; }
   
-  /* Cards laterais (Violência Física, etc.) */
   .aside-item {
     padding: 1.8rem;
     background: var(--card);
@@ -245,7 +241,6 @@
   }
   .aside-item:last-child { border-bottom: 1px solid var(--border); }
   
-  /* Linha sutil na lateral esquerda */
   .aside-item::before {
     content: '';
     position: absolute;
@@ -272,7 +267,6 @@
   }
   .aside-text { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
 
-  /* LEI */
   .lei-section { background: var(--surface); }
   .lei-grid {
     display: grid; grid-template-columns: repeat(3, 1fr);
@@ -301,7 +295,6 @@
   }
   .lei-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.7; }
 
-  /* CICLO */
   .ciclo-grid {
     display: grid; grid-template-columns: repeat(3, 1fr);
     margin-top: 4rem; position: relative;
@@ -336,7 +329,6 @@
   }
   .ciclo-desc { font-size: 0.84rem; color: var(--muted); line-height: 1.7; }
 
-  /* CANAIS */
   .canais-section { background: var(--surface); }
   .canais-grid {
     display: grid; grid-template-columns: repeat(4, 1fr);
@@ -352,7 +344,6 @@
   }
   .canal-card:hover { background: rgba(181,34,74,0.04); }
 
-  /* Efeito de borda percorrendo o card */
   .canal-card .line {
     position: absolute;
     background: var(--red);
@@ -394,7 +385,6 @@
   .canal-name { font-size: 0.85rem; color: var(--cream); font-weight: 500; margin-bottom: 0.4rem; }
   .canal-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.55; }
 
-  /* CTA FINAL */
   .cta-section {
     display: grid; grid-template-columns: 1fr 1fr;
     min-height: 50vh; background: var(--bg);
@@ -456,7 +446,6 @@
   .disclaimer-text { font-size: 0.82rem; color: var(--muted); line-height: 1.75; }
   .disclaimer-text + .disclaimer-text { margin-top: 0.8rem; }
 
-  /* FOOTER */
   footer {
     border-top: 1px solid var(--border);
     padding: 2rem 4rem;
@@ -466,7 +455,6 @@
   .footer-left { font-size: 0.75rem; color: var(--dim); line-height: 1.6; }
   .footer-right { font-size: 0.75rem; color: var(--dim); text-align: right; line-height: 1.6; }
 
-  /* ANIMATIONS */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -480,7 +468,6 @@
     50%     { box-shadow: 0 0 32px 6px rgba(181,34,74,0.13); }
   }
 
-  /* Partículas hero */
   .hero-particles { position: absolute; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
   .particle {
     position: absolute; width: 2px; height: 2px; border-radius: 50%;
@@ -488,10 +475,8 @@
     animation: floatDot var(--dur) var(--delay) ease-in-out infinite;
   }
 
-  /* Glow no hero card */
   .hero-stat-card { animation: fadeUp 1.4s 0.3s ease both, glowPulse 5s 2s ease-in-out infinite; }
 
-  /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .hero { grid-template-columns: 1fr; }
@@ -517,7 +502,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-brand"><strong>UNIFAPI</strong> · Análise e Desenvolvimento de Sistemas</div>
   <div class="nav-pill">
@@ -526,7 +510,6 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-left">
     <div class="hero-eyebrow">Cultura Extensionista · UNIFAPI</div>
@@ -558,7 +541,6 @@
   </div>
 </div>
 
-<!-- STATS -->
 <div class="stats-bar">
   <div class="stat-cell">
     <div class="stat-n" data-target="83 mil">0 mil</div>
@@ -574,20 +556,19 @@
   </div>
 </div>
 
-<!-- SOBRE -->
 <section id="sobre">
   <div class="section-label">Fundamentação</div>
   <h2 class="section-title">O que é a violência de gênero?</h2>
   <div class="sobre-grid">
     <div class="sobre-text">
       <p>
-        A <strong>violência contra a mulher</strong> é um fenômeno social complexo, estrutural e histórico, presente em diversas sociedades. Evidencia desigualdades de gênero profundamente enraizadas, manifestando-se por meio de agressões físicas, psicológicas, sexuais, morais e patrimoniais.
+        A <strong>violência contra a mulher</strong> é um fenômeno social complexo, estrutural e histórico, presente em diversas sociedades.
       </p>
       <p>
-        O <strong>feminicídio</strong> representa a forma mais extrema dessa violência: o assassinato de mulher em razão de sua condição de gênero. Frequentemente está associado a contextos de violência doméstica e relações de poder desiguais.
+        O <strong>feminicídio</strong> representa a forma mais extrema dessa violência: o assassinato de mulher em razão de sua condição de gênero.
       </p>
       <p>
-        Além do impacto físico, a violência de gênero gera <strong>depressão, ansiedade e trauma psicológico</strong>. A subnotificação — alimentada pelo medo, dependência financeira ou falta de confiança nas instituições — dificulta a dimensão real do problema.
+        A subnotificação dificulta a dimensão real do problema, alimentada pelo medo e dependência financeira.
       </p>
     </div>
     <div class="sobre-aside">
@@ -611,7 +592,6 @@
   </div>
 </section>
 
-<!-- LEI -->
 <section class="lei-section">
   <div class="section-label">Marco legal</div>
   <h2 class="section-title">A legislação brasileira</h2>
@@ -619,22 +599,21 @@
     <div class="lei-card">
       <div class="lei-num">11.340</div>
       <div class="lei-name">Lei Maria da Penha</div>
-      <div class="lei-desc">Criada em 2006, cria mecanismos para coibir a violência doméstica e familiar contra a mulher, prevendo medidas protetivas de urgência e criando Juizados Especializados.</div>
+      <div class="lei-desc">Criada em 2006 para coibir a violência doméstica e familiar contra a mulher.</div>
     </div>
     <div class="lei-card">
       <div class="lei-num">13.104</div>
       <div class="lei-name">Lei do Feminicídio</div>
-      <div class="lei-desc">Sancionada em 2015, tipifica o feminicídio como crime hediondo com penas agravadas, quando o homicídio é praticado contra mulher em razão de sua condição de gênero.</div>
+      <div class="lei-desc">Sancionada em 2015, tipifica o feminicídio como crime hediondo.</div>
     </div>
     <div class="lei-card">
       <div class="lei-num">14.550</div>
       <div class="lei-name">Proteção ampliada</div>
-      <div class="lei-desc">Legislação mais recente que ampliou o escopo da Lei Maria da Penha, garantindo proteção também em relações afetivas sem coabitação e reforçando fiscalização de medidas protetivas.</div>
+      <div class="lei-desc">Amplia o escopo da proteção para relações afetivas sem coabitação.</div>
     </div>
   </div>
 </section>
 
-<!-- CICLO -->
 <section>
   <div class="section-label">Compreensão</div>
   <h2 class="section-title">O ciclo da violência</h2>
@@ -642,22 +621,21 @@
     <div class="ciclo-step">
       <div class="ciclo-index">01</div>
       <div class="ciclo-name">Tensão</div>
-      <p class="ciclo-desc">O agressor apresenta comportamentos abusivos e ameaças progressivas. A vítima vive em estado de alerta constante, tentando evitar conflitos e "controlar" o ambiente.</p>
+      <p class="ciclo-desc">Comportamentos abusivos e ameaças progressivas.</p>
     </div>
     <div class="ciclo-step">
       <div class="ciclo-index">02</div>
       <div class="ciclo-name">Agressão</div>
-      <p class="ciclo-desc">Ocorre a violência propriamente dita — física, psicológica, sexual, moral ou patrimonial. A intensidade das agressões tende a aumentar a cada novo ciclo.</p>
+      <p class="ciclo-desc">Ocorrência da violência física, psicológica ou moral.</p>
     </div>
     <div class="ciclo-step">
       <div class="ciclo-index">03</div>
       <div class="ciclo-name">Reconciliação</div>
-      <p class="ciclo-desc">O agressor demonstra arrependimento e promessas de mudança. Essa fase — chamada "lua de mel" — dificulta o rompimento do relacionamento pela vítima.</p>
+      <p class="ciclo-desc">Fase de arrependimento e promessas de mudança ("lua de mel").</p>
     </div>
   </div>
 </section>
 
-<!-- CANAIS -->
 <section class="canais-section">
   <div class="section-label">Onde buscar ajuda</div>
   <h2 class="section-title">Canais de apoio</h2>
@@ -669,7 +647,7 @@
       <span class="line line-left"></span>
       <div class="canal-num">180</div>
       <div class="canal-name">Central da Mulher</div>
-      <div class="canal-desc">Atendimento gratuito, 24h. Orientação, informação e encaminhamento.</div>
+      <div class="canal-desc">Atendimento gratuito e 24h para orientação.</div>
     </div>
     <div class="canal-card">
       <span class="line line-top"></span>
@@ -678,7 +656,7 @@
       <span class="line line-left"></span>
       <div class="canal-num">190</div>
       <div class="canal-name">Emergência</div>
-      <div class="canal-desc">Polícia Militar. Em situação de risco imediato, ligue sem hesitar.</div>
+      <div class="canal-desc">Polícia Militar para situações de risco imediato.</div>
     </div>
     <div class="canal-card">
       <span class="line line-top"></span>
@@ -687,7 +665,7 @@
       <span class="line line-left"></span>
       <div class="canal-num">CREAS</div>
       <div class="canal-name">Assistência Social</div>
-      <div class="canal-desc">Rede de proteção social, apoio psicológico e acompanhamento de casos.</div>
+      <div class="canal-desc">Apoio psicológico e acompanhamento de casos.</div>
     </div>
     <div class="canal-card">
       <span class="line line-top"></span>
@@ -696,12 +674,11 @@
       <span class="line line-left"></span>
       <div class="canal-num">DDM</div>
       <div class="canal-name">Delegacia da Mulher</div>
-      <div class="canal-desc">Registro de ocorrência e solicitação de medidas protetivas de urgência.</div>
+      <div class="canal-desc">Registro de ocorrência e medidas protetivas.</div>
     </div>
   </div>
 </section>
 
-<!-- CTA FINAL -->
 <div class="cta-section">
   <div class="cta-left">
     <div class="section-label">Pesquisa acadêmica</div>
@@ -709,7 +686,7 @@
       Sua voz<br><em>importa</em><br>nessa pesquisa.
     </h2>
     <p class="cta-subtitle">
-      O questionário é anônimo, leva cerca de 5 minutos e contribui diretamente para a produção de conhecimento sobre percepção e prevenção da violência de gênero no Brasil.
+      O questionário é anônimo e contribui para a produção de conhecimento sobre prevenção no Brasil.
     </p>
     <a href="https://forms.gle/vgfg8iyuwgLgvzi16" target="_blank" class="cta-btn">
       <span>Responder o questionário</span>
@@ -717,25 +694,20 @@
         <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </a>
-    <p class="cta-note"></p>
   </div>
   <div class="cta-right">
     <div class="disclaimer-box">
       <div class="disclaimer-title">Sobre esta pesquisa</div>
       <p class="disclaimer-text">
-        Trabalho de Cultura Extensionista apresentado à Faculdade UNIFAPI, curso de Análise e Desenvolvimento de Sistemas, 2026.
+        Projeto de Cultura Extensionista da Faculdade UNIFAPI, ADS, 2026.
       </p>
       <p class="disclaimer-text">
         Acadêmicos: Adriana Santiago Severo, Daniel Ranghetti, Evelyn Costa, Guilherme Streit, João Gabriel Morais e Mikael Petriw.
-      </p>
-      <p class="disclaimer-text" style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid var(--border);">
-        Nenhum dado identificável é coletado. Sem nome, e-mail, CPF ou endereço.
       </p>
     </div>
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-left">
     UNIFAPI · Análise e Desenvolvimento de Sistemas · 2026<br>
@@ -767,13 +739,11 @@
     }
   }
 
-  // Contador numérico animado — sobe do 0 até o valor (apenas para estatísticas)
   function animateCounter(el) {
     const raw = el.dataset.target;
     if (!raw) return;
     const target = parseFloat(raw.replace(/[^0-9.]/g, ''));
     const suffix = raw.replace(/[0-9.]/g, ''); 
-    const prefix = el.dataset.prefix || '';
     const duration = 1400;
     const start = performance.now();
     const isFloat = raw.includes('.');
@@ -783,7 +753,7 @@
       const progress = Math.min(elapsed / duration, 1);
       const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
       const current = target * ease;
-      el.textContent = prefix + (isFloat
+      el.textContent = (isFloat
         ? current.toFixed(1)
         : Math.floor(current).toLocaleString('pt-BR')) + suffix;
       if (progress < 1) requestAnimationFrame(step);
@@ -791,12 +761,10 @@
     requestAnimationFrame(step);
   }
 
-  // IntersectionObserver para iniciar a contagem nas estatísticas
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       const el = entry.target;
-
       if (el.classList.contains('stat-cell')) {
         el.querySelectorAll('[data-target]').forEach(animateCounter);
       }
@@ -806,6 +774,9 @@
 
   document.querySelectorAll('.stat-cell').forEach(el => observer.observe(el));
 </script>
+
+<script data-goatcounter="https://mikaelito.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 
 </body>
 </html>
